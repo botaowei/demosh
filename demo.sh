@@ -1,15 +1,13 @@
-mkdir $1
-cd $1
-mkdir css js
-touch index.html
-echo "<!DOCTYPE>
- <title>Hello</title>
- <h1>Hi</h1>" > index.html
-cd css
-touch style.css
-echo "h1{color: red;}" > style.css
-cd ../
-cd js
-touch mail.js
-echo "var string = "Hello World"
- alert(string)" > mail.js
+if [ -d $1 ]; then
+  echo 'error: dir exists'
+  exit
+else
+  mkdir $1
+  cd $1
+  mkdir css js
+  echo "<!DOCTYPE>\n<title>Hello</title>\n<h1>Hi</h1>" > index.html
+  echo "h1{color: red;}" > css/style.css
+  echo "var string = \"Hello World\"\nalert(string)" > js/main.js
+  echo 'success'
+  exit
+fi
